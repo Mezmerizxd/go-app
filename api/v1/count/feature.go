@@ -17,6 +17,6 @@ var count = 0
 func New(parent *feature.Feature) {
 	f := &countFeature{Feature: parent}
 
-	f.Post("/handle_count", handleCount)
-	f.Get("/fetch_count", fetchCount)
+	f.Post("/count/handle", handleCount)
+	f.Get("/count/fetch", fetchCount)
 }
