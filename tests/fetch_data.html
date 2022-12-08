@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghilio</title>
+  </head>
+  <body>
+    <h1>Enter some data</h1>
+    <input type="text" name="title" id="title" placeholder="Title" />
+    <input type="text" name="message" id="message" placeholder="Message" />
+    <input type="text" name="other" id="other" placeholder="Other" />
+
+    <button onclick="submit()">Submit</button>
+  </body>
+
+  <script>
+    const data = [];
+
+    async function submit() {
+      const body = {
+        title: document.getElementById("title").value,
+        message: document.getElementById("message").value,
+        other: document.getElementById("other").value,
+      };
+      const response = await fetch("http://localhost:3001/api/v1/data", {
+        method: "POST",
+        body: body ? JSON.stringify(body) : null,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }).then((res) => {
+        return res.json();
+      });
+
+      if (response && !response.error) {
+        data.push(response.data);
+      } else {
+        alert(response.error);
+      }
+
+      console.log(data);
+    }
+  </script>
+</html>
