@@ -5,11 +5,13 @@ import (
 
 	"github.com/mezmerizxd/go-app/pkg/cache"
 	"github.com/mezmerizxd/go-app/pkg/data"
+	"github.com/mezmerizxd/go-app/pkg/data/users"
 )
 
 type Config struct {
 	Cache cache.Cache
 	Data  *data.Data
+	Users users.Users
 }
 
 type Feature struct {
@@ -17,12 +19,14 @@ type Feature struct {
 
 	Cache cache.Cache
 	Data  *data.Data
+	Users users.Users
 }
 
 func New(cfg *Config) *Feature {
 	return &Feature{
 		Cache: cfg.Cache,
 		Data:  cfg.Data,
+		Users: cfg.Users,
 	}
 }
 

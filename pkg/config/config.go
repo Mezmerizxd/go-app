@@ -10,6 +10,8 @@ type RedisConfig struct {
 	Network   string
 }
 
+type UsersConfig struct {}
+
 type Config struct {
 	ServerAddr string
 	Redis      *RedisConfig

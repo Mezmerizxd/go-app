@@ -4,6 +4,7 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/mezmerizxd/go-app/pkg/cache"
 	"github.com/mezmerizxd/go-app/pkg/data"
+	"github.com/mezmerizxd/go-app/pkg/data/users"
 	"github.com/mezmerizxd/go-app/pkg/feature"
 )
 
@@ -17,6 +18,7 @@ type Version struct {
 type Config struct {
 	Cache cache.Cache
 	Data  *data.Data
+	Users users.Users
 }
 
 func New(cfg *Config) *Version {
@@ -27,6 +29,7 @@ func New(cfg *Config) *Version {
 		featureCfg: &feature.Config{
 			Cache: cfg.Cache,
 			Data:  cfg.Data,
+			Users: cfg.Users,
 		},
 	}
 }
