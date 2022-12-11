@@ -17,8 +17,9 @@ type usersFeature struct {
 func New(parent *feature.Feature) {
 	f := &usersFeature{Feature: parent}
 
-	f.Get("/users/{user}", f.getUser)
-	f.Post("/create/user", f.createUser)
+	f.Get("/users/u/{user}", f.getUser)
+	f.Get("/users/all", f.getAllUsers)
+	f.Post("/users/create", f.createUser)
 }
 
 func makeUser(user *users.User) *usersUser {

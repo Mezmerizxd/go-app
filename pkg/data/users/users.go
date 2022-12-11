@@ -16,6 +16,7 @@ type User struct {
 }
 
 type Users interface {
+	GetAllUsers(ctx context.Context) (*[]User, error)
 	GetUserByUsername(ctx context.Context, username string) (*User, error)
 	CreateUser(ctx context.Context, user User) (bool, error)
 }
@@ -27,6 +28,7 @@ type users struct {
 var users_list = []User{}
 
 var ErrUserNotFound = errors.New("users: user not found")
+var ErrNoUsersFound = errors.New("users: no users found")
 
 func New(cacheImpl cache.Cache) Users {
 	return &users{
@@ -34,9 +36,17 @@ func New(cacheImpl cache.Cache) Users {
 	}
 }
 
+func (u *users) GetAllUsers(ctx context.Context) (*[]User, error) {
+	if len(users_list) == 0 {
+		return nil, ErrNoUsersFound
+	}
+
+	return &users_list, nil
+}
+
 func (u *users) GetUserByUsername(ctx context.Context, username string) (*User, error) {
 	if len(users_list) == 0 {
-		return nil, ErrUserNotFound
+		return nil, ErrNoUsersFound
 	}
 
 	index := -1

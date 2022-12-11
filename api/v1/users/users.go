@@ -3,7 +3,6 @@ package users
 import (
 	"context"
 	"encoding/json"
-	"log"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -24,24 +23,33 @@ func (f *usersFeature) getUser(ctx context.Context, w responder.Responder, r *ht
 		w.Error("json", "No user found")
 		return
 	}
-
+	
 	w.Success("json", makeUser(user))
 }
 
-func (f *usersFeature) createUser(ctx context.Context, w responder.Responder, r *http.Request) {
-	request := map[string]string{}
-	json.NewDecoder(r.Body).Decode(&request)
-
-	body := users.User{
-		Firstname: request["firstname"],
-		Lastname: request["lastname"],
-		Username: request["username"],
-		Email: request["email"],
+func (f *usersFeature) getAllUsers(ctx context.Context, w responder.Responder, r *http.Request) {
+	users, err := f.Data.Users.GetAllUsers(ctx)
+	if err != nil {
+		w.Error("json", "No users found")
+		return
 	}
 
-	log.Printf("%s", body)
+	w.Success("json", users)
+}
 
-	success, err := f.Data.Users.CreateUser(ctx, body)
+func (f *usersFeature) createUser(ctx context.Context, w responder.Responder, r *http.Request) {
+	body := map[string]string{}
+	json.NewDecoder(r.Body).Decode(&body)
+
+	data := users.User{
+		Firstname: body["firstname"],
+		Lastname: body["lastname"],
+		Username: body["username"],
+		Email: body["email"],
+		Description: body["description"],
+	}
+
+	success, err := f.Data.Users.CreateUser(ctx, data)
 	if err != nil && success == false {
 		w.Error("json", "Failed to create user")
 		return
