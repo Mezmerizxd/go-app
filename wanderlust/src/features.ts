@@ -1,11 +1,14 @@
 export async function handleCount(count: any, setCount: any) {
-  const response = await fetch("http://localhost:3001/api/v1/count/handle", {
-    method: "POST",
-    body: JSON.stringify({ count: count }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
+  const response = await fetch(
+    "http://localhost:3001/api/v1/wanderlust/count/handle",
+    {
+      method: "POST",
+      body: JSON.stringify({ count: count }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => {
     return res.json();
   });
   if (response && !response.error) {
@@ -19,17 +22,20 @@ export async function handleForm(
   country: any,
   setCompanys: any
 ) {
-  const response = await fetch("http://localhost:3001/api/v1/form/handle", {
-    method: "POST",
-    body: JSON.stringify({
-      company: company,
-      contact: contact,
-      country: country,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
+  const response = await fetch(
+    "http://localhost:3001/api/v1/wanderlust/form/handle",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        company: company,
+        contact: contact,
+        country: country,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => {
     return res.json();
   });
   if (response && !response.error) {
@@ -38,12 +44,15 @@ export async function handleForm(
 }
 
 export async function refreshUsers(users: any, setUsers: any) {
-  const response = await fetch("http://localhost:3001/api/v1/users/all", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
+  const response = await fetch(
+    "http://localhost:3001/api/v1/wanderlust/users/all",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => {
     return res.json();
   });
   if (response && !response.error) {
@@ -58,19 +67,22 @@ export async function createUser(userValues: {
   email: any;
   description: any;
 }) {
-  const response = await fetch("http://localhost:3001/api/v1/users/create", {
-    method: "POST",
-    body: JSON.stringify({
-      firstname: userValues.firstname,
-      lastname: userValues.lastname,
-      username: userValues.username,
-      email: userValues.email,
-      description: userValues.description,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  }).then((res) => {
+  const response = await fetch(
+    "http://localhost:3001/api/v1/wanderlust/users/create",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        firstname: userValues.firstname,
+        lastname: userValues.lastname,
+        username: userValues.username,
+        email: userValues.email,
+        description: userValues.description,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  ).then((res) => {
     return res.json();
   });
 }

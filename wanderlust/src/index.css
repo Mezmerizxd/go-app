@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: rgb(30, 30, 30);
+}
+
+p {
+  color: white;
+}

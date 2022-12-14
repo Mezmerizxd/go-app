@@ -17,9 +17,9 @@ type Config struct {
 	Redis      *RedisConfig
 }
 
-func New() *Config {
+func New(port string) *Config {
 	return &Config{
-		ServerAddr: optionalEnv("SERVER_ADDR", ":3001"),
+		ServerAddr: optionalEnv("SERVER_ADDR", port),
 
 		Redis: &RedisConfig{
 			Addr:      optionalEnv("REDIS_ADDR", "127.0.0.1:6379"),

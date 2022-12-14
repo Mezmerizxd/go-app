@@ -34,12 +34,15 @@ export default function App() {
 
   useEffect(() => {
     setTimeout(async () => {
-      const response = await fetch("http://localhost:3001/api/v1/count/fetch", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then((res) => {
+      const response = await fetch(
+        "http://localhost:3001/api/v1/wanderlust/count/fetch",
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      ).then((res) => {
         return res.json();
       });
       if (response && !response.error) {

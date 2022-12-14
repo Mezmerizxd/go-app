@@ -1,11 +1,11 @@
 package v1
 
 import (
-	"github.com/mezmerizxd/go-app/api/v1/count"
-	"github.com/mezmerizxd/go-app/api/v1/data"
-	"github.com/mezmerizxd/go-app/api/v1/form"
 	"github.com/mezmerizxd/go-app/api/v1/test"
-	"github.com/mezmerizxd/go-app/api/v1/users"
+	"github.com/mezmerizxd/go-app/api/v1/wanderlust/count"
+	"github.com/mezmerizxd/go-app/api/v1/wanderlust/data"
+	"github.com/mezmerizxd/go-app/api/v1/wanderlust/form"
+	"github.com/mezmerizxd/go-app/api/v1/wanderlust/users"
 	"github.com/mezmerizxd/go-app/pkg/version"
 )
 

@@ -17,5 +17,5 @@ type dataFeature struct {
 func New(parent *feature.Feature) {
 	f := &dataFeature{Feature: parent}
 
-	f.Post("/data", handleData)
+	f.Post("/wanderlust/data", handleData)
 }

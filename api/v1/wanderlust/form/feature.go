@@ -19,5 +19,5 @@ var table = []Form{}
 func New(parent *feature.Feature) {
 	f := &formFeature{Feature: parent}
 
-	f.Post("/form/handle", handleForm)
+	f.Post("/wanderlust/form/handle", handleForm)
 }

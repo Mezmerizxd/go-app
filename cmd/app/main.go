@@ -17,7 +17,7 @@ import (
 
 func main() {
 	// Initialize the server
-	cfg := config.New()
+	cfg := config.New(":3001")
 	cacheImpl := redis.New(cfg.Redis)
 	dataImpl := data.New(&data.Config{
 		Cache: cacheImpl,
