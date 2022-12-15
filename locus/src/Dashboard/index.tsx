@@ -1,81 +1,33 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import AccessibilityIcon from "@mui/icons-material/Accessibility";
-import Person2Icon from "@mui/icons-material/Person2";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import FormatPaintIcon from "@mui/icons-material/FormatPaint";
-import PeopleIcon from "@mui/icons-material/People";
-import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
-import SideNav from "../models/SideNav";
-import { useState } from "react";
+import SideNav from "./models/SideNav";
 import "./styles.scss";
+import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
+import { toggleSideNav } from "./reducer";
+import { SidebarOptions } from "./config";
 
 export default function Dashboard() {
-  const [isSideNavOpen, setIsSideNavOpen] = useState(true);
+  const state = useAppSelector((state) => state.dashboard);
+  const dispatch = useAppDispatch();
 
   return (
     <div className="Dashboard-container">
       <div className="Dashboard-top-nav-container">
         <div className="top-nav-left">
           <i>
-            <MenuIcon onClick={() => setIsSideNavOpen(!isSideNavOpen)} />
+            <MenuIcon onClick={() => dispatch(toggleSideNav())} />
           </i>
+          <div className="top-nav-left-title">
+            <h1>LOCUS</h1>
+          </div>
         </div>
       </div>
 
       <div
         className="Dashboard"
-        id={isSideNavOpen ? "ShowSideNav" : "HideSideNav"}
+        id={state.isSideNavOpen ? "ShowSideNav" : "HideSideNav"}
       >
         <div className="Dashboard-side-nav-container">
-          <SideNav
-            isSideNavOpen={isSideNavOpen}
-            groups={[
-              {
-                groupName: "Main",
-                options: [
-                  {
-                    name: "Dashboard",
-                    icon: <DashboardIcon />,
-                  },
-                  {
-                    name: "Friends",
-                    icon: <PeopleIcon />,
-                  },
-                ],
-              },
-              {
-                groupName: "Settings",
-                options: [
-                  {
-                    name: "Profile",
-                    icon: <Person2Icon />,
-                  },
-                  {
-                    name: "Account",
-                    icon: <AccountBoxIcon />,
-                  },
-                  {
-                    name: "Appearance",
-                    icon: <FormatPaintIcon />,
-                  },
-                ],
-              },
-              {
-                groupName: "Other",
-                options: [
-                  {
-                    name: "Accessibility",
-                    icon: <AccessibilityIcon />,
-                  },
-                  {
-                    name: "Legalities",
-                    icon: <LocalPoliceIcon />,
-                  },
-                ],
-              },
-            ]}
-          />
+          <SideNav groups={SidebarOptions} />
         </div>
 
         <div className="Dashboard-content">

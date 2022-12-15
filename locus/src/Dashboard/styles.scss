@@ -1,3 +1,5 @@
+$PrimaryColour: rgb(69, 255, 177);
+
 .Dashboard-container {
   position: absolute;
   width: 100vw;
@@ -35,6 +37,17 @@
           }
         }
       }
+
+      .top-nav-left-title {
+        margin-left: 20px;
+
+        h1 {
+          font-family: "Monoton", cursive;
+          font-weight: 100;
+          color: $PrimaryColour;
+          letter-spacing: 2px;
+        }
+      }
     }
   }
 
@@ -52,6 +65,9 @@
 
         &:hover {
           background-color: rgba(40, 40, 40);
+        }
+        &:active {
+          background-color: rgba(35, 35, 35);
         }
       }
     }
@@ -80,6 +96,21 @@
           }
         }
       }
+
+      .Dashboard-side-nav-group {
+        margin-bottom: 10px;
+        hr {
+          border-color: rgba(255, 255, 255, 0.15);
+        }
+      }
+    }
+  }
+
+  #SideNavButtonSelected {
+    * {
+      color: $PrimaryColour;
+      font-weight: bolder;
+      transition: 0.2s ease-in-out;
     }
   }
 
@@ -98,6 +129,7 @@
       border-right: 1px rgba(255, 255, 255, 0.15) solid;
       padding: 10px;
       transition: 0.8s;
+      overflow-y: auto;
 
       h1 {
         font-size: medium;
@@ -125,5 +157,17 @@
         }
       }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $PrimaryColour;
+    border-radius: 5px;
   }
 }
