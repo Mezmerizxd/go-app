@@ -1,9 +1,10 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import SideNav from "./models/SideNav";
+import SideNav from "./models/SideNav/SideNav";
 import "./styles.scss";
 import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
 import { toggleSideNav } from "./reducer";
 import { SidebarOptions } from "./config";
+import Masks from "./components/GTA/Masks";
 
 export default function Dashboard() {
   const state = useAppSelector((state) => state.dashboard);
@@ -26,12 +27,10 @@ export default function Dashboard() {
         className="Dashboard"
         id={state.isSideNavOpen ? "ShowSideNav" : "HideSideNav"}
       >
-        <div className="Dashboard-side-nav-container">
-          <SideNav groups={SidebarOptions} />
-        </div>
+        <SideNav groups={SidebarOptions} />
 
         <div className="Dashboard-content">
-          <p>Dashboard</p>
+          <Masks />
         </div>
       </div>
     </div>

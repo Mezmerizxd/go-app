@@ -1,17 +1,15 @@
-$PrimaryColour: rgb(69, 255, 177);
-
 .Dashboard-container {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: rgb(20, 20, 20);
+  background-color: var(--main-primary-bg-colour);
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-rows: 60px 1fr;
 
   .Dashboard-top-nav-container {
-    background-color: rgba(35, 35, 35);
-    border-bottom: 1px rgba(255, 255, 255, 0.15) solid;
+    background-color: var(--main-dashboard-nav-colour);
+    border-bottom: 1px var(--main-border-colour) solid;
     padding: 10px;
 
     .top-nav-left {
@@ -44,73 +42,10 @@ $PrimaryColour: rgb(69, 255, 177);
         h1 {
           font-family: "Monoton", cursive;
           font-weight: 100;
-          color: $PrimaryColour;
+          color: var(--main-accent-colour);
           letter-spacing: 2px;
         }
       }
-    }
-  }
-
-  #ShowSideNav {
-    grid-template-columns: 300px 1fr;
-    .Dashboard-side-nav-container {
-      .Side-nav-button {
-        height: 30px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding: 10px;
-        padding-left: 30px;
-        cursor: pointer;
-        border-radius: 2px;
-
-        &:hover {
-          background-color: rgba(40, 40, 40);
-        }
-        &:active {
-          background-color: rgba(35, 35, 35);
-        }
-      }
-    }
-  }
-
-  #HideSideNav {
-    grid-template-columns: 60px 1fr;
-    .Dashboard-side-nav-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      i {
-        margin-bottom: 10px;
-        margin-top: 10px;
-        svg {
-          width: 30px;
-          height: 30px;
-          cursor: pointer;
-
-          &:hover {
-            color: rgba(255, 255, 255, 1);
-          }
-          &:active {
-            color: rgba(255, 255, 255, 0.6);
-          }
-        }
-      }
-
-      .Dashboard-side-nav-group {
-        margin-bottom: 10px;
-        hr {
-          border-color: rgba(255, 255, 255, 0.15);
-        }
-      }
-    }
-  }
-
-  #SideNavButtonSelected {
-    * {
-      color: $PrimaryColour;
-      font-weight: bolder;
-      transition: 0.2s ease-in-out;
     }
   }
 
@@ -119,47 +54,16 @@ $PrimaryColour: rgb(69, 255, 177);
     grid-auto-columns: 1fr;
     gap: 0px 0px;
     transition: 0.3s;
+    overflow: hidden;
 
     .Dashboard-content {
-      padding: 10px;
-    }
-
-    .Dashboard-side-nav-container {
-      background-color: rgba(25, 25, 25);
-      border-right: 1px rgba(255, 255, 255, 0.15) solid;
-      padding: 10px;
-      transition: 0.8s;
-      overflow-y: auto;
-
-      h1 {
-        font-size: medium;
-        margin-left: 10px;
-        margin-top: 30px;
-        margin-bottom: 10px;
-        color: rgba(255, 255, 255, 0.6);
-      }
-
-      .Side-nav-button {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        p {
-          font-size: large;
-          margin-left: 10px;
-          color: rgba(255, 255, 255, 0.8);
-        }
-
-        svg {
-          width: 30px;
-          height: 30px;
-          color: rgba(255, 255, 255, 0.8);
-        }
-      }
+      overflow-x: auto;
+      overflow-y: hidden;
+      display: flex;
     }
   }
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
     height: 5px;
     border-radius: 5px;
   }
@@ -167,7 +71,7 @@ $PrimaryColour: rgb(69, 255, 177);
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: $PrimaryColour;
+    background: var(--main-accent-colour);
     border-radius: 5px;
   }
 }

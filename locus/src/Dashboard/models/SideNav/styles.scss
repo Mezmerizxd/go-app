@@ -1,0 +1,96 @@
+.Dashboard-side-nav-container {
+  background-color: var(--main-dashboard-side-nav-colour);
+  border-right: 1px var(--main-border-colour) solid;
+  padding: 10px;
+  transition: 0.8s;
+  overflow-y: auto;
+
+  h1 {
+    font-size: medium;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .Side-nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+      font-size: large;
+      margin-left: 10px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    svg {
+      width: 30px;
+      height: 30px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+#SideNavButtonSelected {
+  * {
+    color: var(--main-accent-colour);
+    font-weight: bolder;
+    transition: 0.2s ease-in-out;
+  }
+}
+
+#ShowSideNav {
+  grid-template-columns: 300px 1fr;
+  .Dashboard-side-nav-container {
+    .Side-nav-button {
+      height: 30px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding: 10px;
+      padding-left: 30px;
+      cursor: pointer;
+      border-radius: 2px;
+
+      &:hover {
+        background-color: rgba(40, 40, 40);
+      }
+      &:active {
+        background-color: rgba(35, 35, 35);
+      }
+    }
+  }
+}
+
+#HideSideNav {
+  grid-template-columns: 60px 1fr;
+  .Dashboard-side-nav-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    i {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      svg {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+        }
+        &:active {
+          color: rgba(255, 255, 255, 0.6);
+        }
+      }
+    }
+
+    .Dashboard-side-nav-group {
+      margin-bottom: 10px;
+      hr {
+        border-color: var(--main-border-colour);
+      }
+    }
+  }
+}
