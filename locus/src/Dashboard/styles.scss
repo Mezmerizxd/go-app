@@ -59,7 +59,7 @@
     .Dashboard-content {
       overflow-x: auto;
       overflow-y: hidden;
-      display: flex;
+      display: grid;
     }
   }
   ::-webkit-scrollbar {

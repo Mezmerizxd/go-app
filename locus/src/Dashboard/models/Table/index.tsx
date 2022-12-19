@@ -27,7 +27,7 @@ export default function Table({ tableHeaders, data }: TableProps) {
           <tbody>
             {data.map((v, i) => (
               <tr key={i}>
-                {tableHeaders.map((k, i2) => (
+                {tableHeaders.map((k, i) => (
                   <td>{v[k.key]}</td>
                 ))}
               </tr>
