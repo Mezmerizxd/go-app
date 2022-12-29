@@ -1,3 +1,6 @@
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useState } from "react";
 import "./styles.scss";
 
 interface HeaderProps {
@@ -11,28 +14,42 @@ interface TableProps {
 }
 
 export default function Table({ tableHeaders, data }: TableProps) {
+  const [isOpen, setIsOpen] = useState<boolean>(true);
   return (
     <div className="Table-container">
       <div className="Table">
         <table cellSpacing={0}>
-          <thead>
+          <thead onClick={() => setIsOpen(!isOpen)}>
             <tr>
-              {tableHeaders.map((k, i) => (
+              {tableHeaders.map((k: any, i: number) => (
                 <th scope="col" key={i}>
                   {k.name}
                 </th>
               ))}
+              <td onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? (
+                  <i>
+                    <KeyboardArrowDownIcon />
+                  </i>
+                ) : (
+                  <i>
+                    <KeyboardArrowRightIcon />
+                  </i>
+                )}
+              </td>
             </tr>
           </thead>
-          <tbody>
-            {data.map((v, i) => (
-              <tr key={i}>
-                {tableHeaders.map((k, i) => (
-                  <td>{v[k.key]}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
+          {isOpen && (
+            <tbody>
+              {data.map((v: any, i: number) => (
+                <tr key={i}>
+                  {tableHeaders.map((k: any) => (
+                    <td>{v[k.key]}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </div>
     </div>

@@ -9,6 +9,9 @@ require (
 )
 
 require (
-    github.com/cespare/xxhash/v2 v2.1.2
+	firebase.google.com/go v3.13.0+incompatible
+	firebase.google.com/go/v4 v4.10.0 // indirect
+	github.com/cespare/xxhash/v2 v2.1.2
 	github.com/go-chi/cors v1.2.1
+	google.golang.org/api v0.105.0
 )

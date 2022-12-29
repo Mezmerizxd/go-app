@@ -1,10 +1,10 @@
 import MenuIcon from "@mui/icons-material/Menu";
-import SideNav from "./models/SideNav/SideNav";
-import "./styles.scss";
+import SideNav from "./components/SideNav/SideNav";
 import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
 import { toggleSideNav } from "./reducer";
-import { SidebarOptions } from "./config";
+import { Pages, SidebarOptions } from "./config";
 import Masks from "./components/GTA/Masks";
+import "./styles.scss";
 
 export default function Dashboard() {
   const state = useAppSelector((state) => state.dashboard);
@@ -30,7 +30,25 @@ export default function Dashboard() {
         <SideNav groups={SidebarOptions} />
 
         <div className="Dashboard-content">
-          <Masks />
+          {state.page === Pages.Dashboard && <></>}
+
+          {state.page === Pages.GTA5C_Masks && <Masks />}
+          {state.page === Pages.GTA5C_Legs && <></>}
+          {state.page === Pages.GTA5C_Shoes && <></>}
+          {state.page === Pages.GTA5C_Accessories && <></>}
+          {state.page === Pages.GTA5C_Tops && <></>}
+          {state.page === Pages.GTA5C_Hats && <></>}
+          {state.page === Pages.GTA5C_Glasses && <></>}
+          {state.page === Pages.GTA5C_Earrings && <></>}
+          {state.page === Pages.GTA5C_Watches && <></>}
+          {state.page === Pages.GTA5C_Bracelets && <></>}
+
+          {state.page === Pages.Profile && <></>}
+          {state.page === Pages.Account && <></>}
+          {state.page === Pages.Appearance && <></>}
+
+          {state.page === Pages.Accessibility && <></>}
+          {state.page === Pages.Legalities && <></>}
         </div>
       </div>
     </div>

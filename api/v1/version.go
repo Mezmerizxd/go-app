@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"github.com/mezmerizxd/go-app/api/v1/locus/gta"
 	"github.com/mezmerizxd/go-app/api/v1/test"
 	"github.com/mezmerizxd/go-app/api/v1/wanderlust/count"
 	"github.com/mezmerizxd/go-app/api/v1/wanderlust/data"
@@ -17,6 +18,7 @@ func New(cfg *version.Config) *version.Version {
 	v.Register(count.New)
 	v.Register(form.New)
 	v.Register(users.New)
+	v.Register(gta.New)
 
 	return v
 }

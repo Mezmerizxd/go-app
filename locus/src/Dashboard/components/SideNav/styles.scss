@@ -64,6 +64,11 @@
 
 #HideSideNav {
   grid-template-columns: 60px 1fr;
+  .Dashboard-side-nav-container::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+    border-radius: 5px;
+  }
   .Dashboard-side-nav-container {
     display: flex;
     flex-direction: column;

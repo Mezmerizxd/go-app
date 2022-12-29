@@ -1,7 +1,7 @@
 .Table-container {
   height: 100%;
   overflow: auto;
-  padding: 20px;
+  padding: 10px;
 
   .Table {
     height: 100%;
@@ -19,13 +19,15 @@
         font-size: medium;
         color: var(--main-secondary-accent-colour);
         background-color: var(--main-dashboard-nav-colour);
+        cursor: pointer;
 
         th {
+          width: 100%;
           padding-top: 0.75rem;
           padding-bottom: 0.75rem;
           padding-left: 1.5rem;
           padding-right: 1.5rem;
-          border-bottom: 1px var(--main-border-colour) solid;
+          // border-bottom: 1px var(--main-border-colour) solid;
         }
       }
 

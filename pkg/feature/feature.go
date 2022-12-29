@@ -5,6 +5,7 @@ import (
 
 	"github.com/mezmerizxd/go-app/pkg/cache"
 	"github.com/mezmerizxd/go-app/pkg/data"
+	"github.com/mezmerizxd/go-app/pkg/data/gta"
 	"github.com/mezmerizxd/go-app/pkg/data/users"
 )
 
@@ -12,6 +13,7 @@ type Config struct {
 	Cache cache.Cache
 	Data  *data.Data
 	Users users.Users
+	Gta gta.Gta
 }
 
 type Feature struct {
@@ -20,6 +22,7 @@ type Feature struct {
 	Cache cache.Cache
 	Data  *data.Data
 	Users users.Users
+	Gta gta.Gta
 }
 
 func New(cfg *Config) *Feature {
@@ -27,6 +30,7 @@ func New(cfg *Config) *Feature {
 		Cache: cfg.Cache,
 		Data:  cfg.Data,
 		Users: cfg.Users,
+		Gta: cfg.Gta,
 	}
 }
 
