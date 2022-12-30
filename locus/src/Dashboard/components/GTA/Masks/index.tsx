@@ -1,15 +1,26 @@
+import { useEffect, useState } from "react";
+import API from "../../../../classes/API";
 import Content from "../../../models/Content";
 import Table from "../../../models/Table";
-import { Data } from "./data2";
 
 export default function Masks() {
+  const [data, setData] = useState<any>(null);
+
+  useEffect(() => {
+    setTimeout(async () => {
+      const r = await API.Get("http://localhost:3001/api/v1/locus/gta/masks");
+      setData(r.data);
+    });
+  }, []);
+
   return (
     <Content title="Masks">
-      {Data.map((v) => (
+      {data?.map((v) => (
         <Table
+          key={v?.class_name}
           tableHeaders={[
             {
-              name: v.class_name,
+              name: v?.class_name,
               key: "item",
             },
             {
@@ -21,7 +32,7 @@ export default function Masks() {
               key: "texture_id",
             },
           ]}
-          data={v.class_items}
+          data={v?.class_items}
         />
       ))}
     </Content>

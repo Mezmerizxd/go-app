@@ -7,11 +7,13 @@ import (
 	"github.com/mezmerizxd/go-app/pkg/data"
 	"github.com/mezmerizxd/go-app/pkg/data/gta"
 	"github.com/mezmerizxd/go-app/pkg/data/users"
+	"github.com/mezmerizxd/go-app/pkg/firebase"
 )
 
 type Config struct {
 	Cache cache.Cache
 	Data  *data.Data
+	Firebase firebase.Firebase
 	Users users.Users
 	Gta gta.Gta
 }
@@ -21,6 +23,7 @@ type Feature struct {
 
 	Cache cache.Cache
 	Data  *data.Data
+	Firebase firebase.Firebase
 	Users users.Users
 	Gta gta.Gta
 }
@@ -29,6 +32,7 @@ func New(cfg *Config) *Feature {
 	return &Feature{
 		Cache: cfg.Cache,
 		Data:  cfg.Data,
+		Firebase: cfg.Firebase,
 		Users: cfg.Users,
 		Gta: cfg.Gta,
 	}

@@ -11,6 +11,7 @@ import (
 	"github.com/mezmerizxd/go-app/pkg/cache/redis"
 	"github.com/mezmerizxd/go-app/pkg/config"
 	"github.com/mezmerizxd/go-app/pkg/data"
+	"github.com/mezmerizxd/go-app/pkg/firebase"
 	"github.com/mezmerizxd/go-app/pkg/server"
 	"github.com/mezmerizxd/go-app/pkg/version"
 )
@@ -19,12 +20,20 @@ func main() {
 	// Initialize the server
 	cfg := config.New(":3001")
 	cacheImpl := redis.New(cfg.Redis)
+	firebaseImpl := firebase.New(&firebase.Config{
+		Cache: cacheImpl,
+		DatabaseUrl: "https://locus-public-default-rtdb.firebaseio.com/",
+		CredentialPath: "/home/mezmerizxd/Desktop/locus_firebase.json",
+	})
 	dataImpl := data.New(&data.Config{
 		Cache: cacheImpl,
+		Firebase: firebaseImpl,
 	})
+
 	srv := server.New(cfg.ServerAddr, &version.Config{
 		Cache: cacheImpl,
 		Data:  dataImpl,
+		Firebase: firebaseImpl,
 	})
 
 	// Create channel for quitting server

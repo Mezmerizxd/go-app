@@ -7,6 +7,7 @@ import (
 	"github.com/mezmerizxd/go-app/pkg/data/gta"
 	"github.com/mezmerizxd/go-app/pkg/data/users"
 	"github.com/mezmerizxd/go-app/pkg/feature"
+	"github.com/mezmerizxd/go-app/pkg/firebase"
 )
 
 type Version struct {
@@ -19,6 +20,7 @@ type Version struct {
 type Config struct {
 	Cache cache.Cache
 	Data  *data.Data
+	Firebase firebase.Firebase
 	Users users.Users
 	Gta gta.Gta
 }
@@ -31,6 +33,7 @@ func New(cfg *Config) *Version {
 		featureCfg: &feature.Config{
 			Cache: cfg.Cache,
 			Data:  cfg.Data,
+			Firebase: cfg.Firebase,
 			Users: cfg.Users,
 			Gta: cfg.Gta,
 		},
