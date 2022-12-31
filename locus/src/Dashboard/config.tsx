@@ -55,51 +55,51 @@ export const SidebarOptions: SideNavGroupProps[] = [
         icon: <FaMask />,
         page: Pages.GTA5C_Masks,
       },
-      {
-        name: "Legs",
-        icon: <GiHieroglyphLegs />,
-        page: Pages.GTA5C_Legs,
-      },
-      {
-        name: "Shoes",
-        icon: <GiConverseShoe />,
-        page: Pages.GTA5C_Shoes,
-      },
-      {
-        name: "Accessories",
-        icon: <GiNecklace />,
-        page: Pages.GTA5C_Accessories,
-      },
-      {
-        name: "Tops",
-        icon: <GiTShirt />,
-        page: Pages.GTA5C_Tops,
-      },
-      {
-        name: "Hats",
-        icon: <SiRedhat />,
-        page: Pages.GTA5C_Hats,
-      },
-      {
-        name: "Glasses",
-        icon: <FaGlasses />,
-        page: Pages.GTA5C_Glasses,
-      },
-      {
-        name: "Earrings",
-        icon: <GiDropEarrings />,
-        page: Pages.GTA5C_Earrings,
-      },
-      {
-        name: "Watches",
-        icon: <GiWatch />,
-        page: Pages.GTA5C_Watches,
-      },
-      {
-        name: "Bracelets",
-        icon: <GiGemNecklace />,
-        page: Pages.GTA5C_Bracelets,
-      },
+      // {
+      //   name: "Legs",
+      //   icon: <GiHieroglyphLegs />,
+      //   page: Pages.GTA5C_Legs,
+      // },
+      // {
+      //   name: "Shoes",
+      //   icon: <GiConverseShoe />,
+      //   page: Pages.GTA5C_Shoes,
+      // },
+      // {
+      //   name: "Accessories",
+      //   icon: <GiNecklace />,
+      //   page: Pages.GTA5C_Accessories,
+      // },
+      // {
+      //   name: "Tops",
+      //   icon: <GiTShirt />,
+      //   page: Pages.GTA5C_Tops,
+      // },
+      // {
+      //   name: "Hats",
+      //   icon: <SiRedhat />,
+      //   page: Pages.GTA5C_Hats,
+      // },
+      // {
+      //   name: "Glasses",
+      //   icon: <FaGlasses />,
+      //   page: Pages.GTA5C_Glasses,
+      // },
+      // {
+      //   name: "Earrings",
+      //   icon: <GiDropEarrings />,
+      //   page: Pages.GTA5C_Earrings,
+      // },
+      // {
+      //   name: "Watches",
+      //   icon: <GiWatch />,
+      //   page: Pages.GTA5C_Watches,
+      // },
+      // {
+      //   name: "Bracelets",
+      //   icon: <GiGemNecklace />,
+      //   page: Pages.GTA5C_Bracelets,
+      // },
     ],
   },
   {

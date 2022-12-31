@@ -15,6 +15,7 @@ interface TableProps {
 
 export default function Table({ tableHeaders, data }: TableProps) {
   const [isOpen, setIsOpen] = useState<boolean>(true);
+
   return (
     <div className="Table-container">
       <div className="Table">
