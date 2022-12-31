@@ -55,11 +55,11 @@ export const SidebarOptions: SideNavGroupProps[] = [
         icon: <FaMask />,
         page: Pages.GTA5C_Masks,
       },
-      // {
-      //   name: "Legs",
-      //   icon: <GiHieroglyphLegs />,
-      //   page: Pages.GTA5C_Legs,
-      // },
+      {
+        name: "Legs",
+        icon: <GiHieroglyphLegs />,
+        page: Pages.GTA5C_Legs,
+      },
       // {
       //   name: "Shoes",
       //   icon: <GiConverseShoe />,

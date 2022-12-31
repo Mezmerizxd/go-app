@@ -4,6 +4,7 @@ import { useAppSelector, useAppDispatch } from "../hooks/reduxHooks";
 import { toggleSideNav } from "./reducer";
 import { Pages, SidebarOptions } from "./config";
 import Masks from "./components/GTA/Masks";
+import Legs from "./components/GTA/Legs";
 import "./styles.scss";
 
 export default function Dashboard() {
@@ -33,7 +34,7 @@ export default function Dashboard() {
           {state.page === Pages.Dashboard && <></>}
 
           {state.page === Pages.GTA5C_Masks && <Masks />}
-          {state.page === Pages.GTA5C_Legs && <></>}
+          {state.page === Pages.GTA5C_Legs && <Legs />}
           {state.page === Pages.GTA5C_Shoes && <></>}
           {state.page === Pages.GTA5C_Accessories && <></>}
           {state.page === Pages.GTA5C_Tops && <></>}

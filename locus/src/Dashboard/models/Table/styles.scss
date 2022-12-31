@@ -29,6 +29,13 @@
           padding-right: 1.5rem;
           // border-bottom: 1px var(--main-border-colour) solid;
         }
+
+        tr {
+          td {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
+        }
       }
 
       tbody {
