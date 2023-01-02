@@ -23,6 +23,7 @@ type Firebase interface {
 type firebase struct {
 	cache cache.Cache
 	app *FB.App
+	database *db.Client
 }
 
 // var ErrInitializingApp = errors.New("firebase: error initializing app")
@@ -39,17 +40,18 @@ func New(cfg *Config) Firebase {
 		log.Fatalf("error initializing app: %v\n", err)
 	}
 
+	database, err := app.Database(context.Background())
+	if err != nil {
+		log.Fatalln("Error initializing database client:", err)
+	} 
+
 	return &firebase{
 		cache: cfg.Cache,
 		app: app,
+		database: database,
 	}
 }
 
 func (f *firebase) Database() db.Client {
-	client, err := f.app.Database(context.Background())
-	if err != nil {
-		log.Fatalln("Error initializing database client:", err)
-	}
-
-	return *client
+	return *f.database
 }

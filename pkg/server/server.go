@@ -18,6 +18,7 @@ type Server struct {
 
 func New(addr string, cfg *version.Config) *Server {
 	r := chi.NewRouter()
+	
 
 	// Middlewares
 	r.Use(cors.Handler(cors.Options{
@@ -39,6 +40,9 @@ func New(addr string, cfg *version.Config) *Server {
 
 	// API
 	r.Mount("/api/v1", v1.New(cfg))
+
+	// WS
+	// r.HandleFunc("/ws", ws.Handler)
 
 	return &Server{
 		srv: &http.Server{

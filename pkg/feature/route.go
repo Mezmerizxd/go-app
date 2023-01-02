@@ -8,15 +8,15 @@ import (
 	"github.com/mezmerizxd/go-app/pkg/responder"
 )
 
-type handlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
+type routeHandlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
 
 type Route struct {
 	method  string
 	pattern string
-	handler handlerFunc
+	handler routeHandlerFunc
 }
 
-func (r *Route) Inject(mux *chi.Mux) {
+func (r *Route) InjectRoute(mux *chi.Mux) {
 	handler := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		resp := responder.New(w, req)
 		r.handler(req.Context(), resp, req)

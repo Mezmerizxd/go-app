@@ -11,14 +11,14 @@ import (
 )
 
 func New(cfg *version.Config) *version.Version {
-	v := version.New(cfg)
+	v := version.NewRoute(cfg)
 
-	v.Register(test.New)
-	v.Register(data.New)
-	v.Register(count.New)
-	v.Register(form.New)
-	v.Register(users.New)
-	v.Register(gta.New)
+	v.RegisterRoute(test.New)
+	v.RegisterRoute(data.New)
+	v.RegisterRoute(count.New)
+	v.RegisterRoute(form.New)
+	v.RegisterRoute(users.New)
+	v.RegisterRoute(gta.New)
 
 	return v
 }

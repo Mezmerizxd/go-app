@@ -38,11 +38,11 @@ func New(cfg *Config) *Feature {
 	}
 }
 
-func (f *Feature) Get(pattern string, handler handlerFunc) *Route {
+func (f *Feature) Get(pattern string, handler routeHandlerFunc) *Route {
 	return f.registerRoute(http.MethodGet, pattern, handler)
 }
 
-func (f *Feature) Post(pattern string, handler handlerFunc) *Route {
+func (f *Feature) Post(pattern string, handler routeHandlerFunc) *Route {
 	return f.registerRoute(http.MethodPost, pattern, handler)
 }
 
@@ -50,7 +50,7 @@ func (f *Feature) Routes() []*Route {
 	return f.routes
 }
 
-func (f *Feature) registerRoute(method, pattern string, handler handlerFunc) *Route {
+func (f *Feature) registerRoute(method, pattern string, handler routeHandlerFunc) *Route {
 	r := &Route{
 		method:  method,
 		pattern: pattern,

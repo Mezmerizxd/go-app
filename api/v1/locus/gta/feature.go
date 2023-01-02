@@ -1,7 +1,10 @@
 package gta
 
 import (
+	"context"
+
 	"github.com/mezmerizxd/go-app/pkg/feature"
+	"github.com/pkgz/websocket"
 )
 
 type gtaFeature struct {
@@ -24,4 +27,8 @@ func isValidCatagory(catagory string) bool {
 	default:
 		return false
 	}
+}
+
+func testSocket(ctx context.Context, conn *websocket.Conn, msg websocket.Message) {
+
 }
