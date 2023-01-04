@@ -9,8 +9,8 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
-	"github.com/gorilla/websocket"
 	v1 "github.com/mezmerizxd/go-app/api/v1"
+	"github.com/mezmerizxd/go-app/pkg/socket"
 	"github.com/mezmerizxd/go-app/pkg/version"
 )
 
@@ -18,18 +18,8 @@ type Server struct {
 	srv *http.Server
 }
 
-var upgrader = websocket.Upgrader{
-	ReadBufferSize:    4096,
-	WriteBufferSize:   4096,
-	EnableCompression: true,
-	CheckOrigin: func(r *http.Request) bool {
-		return true
-	},
-}
-
 func echo(w http.ResponseWriter, r *http.Request) {
-	c, _ := upgrader.Upgrade(w, r, nil)
-	defer c.Close()
+	c := socket.New(w, r)
 
 	for {
 		mt, message, _ := c.ReadMessage()

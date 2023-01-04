@@ -9,11 +9,17 @@ import (
 )
 
 type routeHandlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
+type socketHandlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
 
 type Route struct {
 	method  string
 	pattern string
 	handler routeHandlerFunc
+}
+
+type Socket struct {
+	pattern string
+	handler socketHandlerFunc
 }
 
 func (r *Route) InjectRoute(mux *chi.Mux) {
