@@ -14,8 +14,7 @@
 
     <button onclick="submit()">Submit</button>
   </body>
-
-  <script>
+  <!-- <script>
     const data = [];
 
     async function submit() {
@@ -42,5 +41,15 @@
 
       console.log(data);
     }
+  </script> -->
+  <script type="module">
+    import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+    const socket = io("http://localhost:8080/ws");
+
+    socket.on("testSocket", (data) => {
+      console.log(data);
+    });
+
+    socket.emit("echo", "Hello World!");
   </script>
 </html>

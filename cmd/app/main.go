@@ -18,7 +18,7 @@ import (
 
 func main() {
 	// Initialize the server
-	cfg := config.New(":3001")
+	cfg := config.New(":3002")
 	cacheImpl := redis.New(cfg.Redis)
 	firebaseImpl := firebase.New(&firebase.Config{
 		Cache: cacheImpl,

@@ -2,12 +2,14 @@ package server
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"time"
 
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
+	"github.com/gorilla/websocket"
 	v1 "github.com/mezmerizxd/go-app/api/v1"
 	"github.com/mezmerizxd/go-app/pkg/version"
 )
@@ -16,9 +18,30 @@ type Server struct {
 	srv *http.Server
 }
 
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:    4096,
+	WriteBufferSize:   4096,
+	EnableCompression: true,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
+func echo(w http.ResponseWriter, r *http.Request) {
+	c, _ := upgrader.Upgrade(w, r, nil)
+	defer c.Close()
+
+	for {
+		mt, message, _ := c.ReadMessage()
+
+		log.Printf("received: %s", message)
+		c.WriteMessage(mt, message)
+	}
+
+}
+
 func New(addr string, cfg *version.Config) *Server {
 	r := chi.NewRouter()
-	
 
 	// Middlewares
 	r.Use(cors.Handler(cors.Options{
@@ -41,8 +64,7 @@ func New(addr string, cfg *version.Config) *Server {
 	// API
 	r.Mount("/api/v1", v1.New(cfg))
 
-	// WS
-	// r.HandleFunc("/ws", ws.Handler)
+	r.HandleFunc("/echo", echo)
 
 	return &Server{
 		srv: &http.Server{
