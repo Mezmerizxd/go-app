@@ -18,12 +18,12 @@ import (
 
 func main() {
 	// Initialize the server
-	cfg := config.New(":3002")
+	cfg := config.New(":3001")
 	cacheImpl := redis.New(cfg.Redis)
 	firebaseImpl := firebase.New(&firebase.Config{
 		Cache: cacheImpl,
 		DatabaseUrl: "https://locus-public-default-rtdb.firebaseio.com/",
-		CredentialPath: "/home/mezmerizxd/Desktop/locus_firebase.json",
+		CredentialPath: "/home/mezmerizxd/Documents/locus_firebase.json",
 	})
 	dataImpl := data.New(&data.Config{
 		Cache: cacheImpl,

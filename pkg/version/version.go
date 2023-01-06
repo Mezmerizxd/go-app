@@ -8,15 +8,14 @@ import (
 	"github.com/mezmerizxd/go-app/pkg/data/users"
 	"github.com/mezmerizxd/go-app/pkg/feature"
 	"github.com/mezmerizxd/go-app/pkg/firebase"
-	"github.com/pkgz/websocket"
 )
 
 type Version struct {
 	*chi.Mux
-	WsMux *websocket.Server
 
 	featureCfg *feature.Config
 	Routes     []*feature.Route
+	Sockets    []*feature.Socket
 }
 
 type Config struct {
@@ -42,6 +41,21 @@ func NewRoute(cfg *Config) *Version {
 	}
 }
 
+func NewSocket(cfg *Config) *Version {
+	r := chi.NewRouter()
+
+	return &Version{
+		Mux: r,
+		featureCfg: &feature.Config{
+			Cache: cfg.Cache,
+			Data:  cfg.Data,
+			Firebase: cfg.Firebase,
+			Users: cfg.Users,
+			Gta: cfg.Gta,
+		},
+	}
+}
+
 func (v *Version) RegisterRoute(factory func(*feature.Feature)) {
 	f := feature.New(v.featureCfg)
 	factory(f)
@@ -49,5 +63,15 @@ func (v *Version) RegisterRoute(factory func(*feature.Feature)) {
 	for _, r := range f.Routes() {
 		r.InjectRoute(v.Mux)
 		v.Routes = append(v.Routes, r)
+	}
+}
+
+func (v *Version) RegisterSocket(factory func(*feature.Feature)) {
+	f := feature.New(v.featureCfg)
+	factory(f)
+
+	for _, s := range  f.Sockets() {
+		s.InjectSocket(v.Mux)
+		v.Sockets = append(v.Sockets, s)
 	}
 }

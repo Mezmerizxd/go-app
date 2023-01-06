@@ -20,6 +20,7 @@ type Config struct {
 
 type Feature struct {
 	routes []*Route
+	sockets []*Socket
 
 	Cache cache.Cache
 	Data  *data.Data
@@ -58,4 +59,21 @@ func (f *Feature) registerRoute(method, pattern string, handler routeHandlerFunc
 	}
 	f.routes = append(f.routes, r)
 	return r
+}
+
+func (f *Feature) Socket(pattern string, handler socketHandlerFunc) *Socket {
+	return f.registerSocket(pattern, handler)
+}
+
+func (f *Feature) Sockets() []*Socket {
+	return f.sockets
+}
+
+func (f *Feature) registerSocket(pattern string, handler socketHandlerFunc) *Socket {
+	s := &Socket{
+		pattern: pattern,
+		handler: handler,
+	}
+	f.sockets = append(f.sockets, s)
+	return s
 }

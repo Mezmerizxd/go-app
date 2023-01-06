@@ -9,7 +9,7 @@ import (
 )
 
 type routeHandlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
-type socketHandlerFunc func(ctx context.Context, w responder.Responder, req *http.Request)
+type socketHandlerFunc func(ctx context.Context, w http.ResponseWriter, req *http.Request)
 
 type Route struct {
 	method  string
@@ -36,5 +36,15 @@ func (r *Route) InjectRoute(mux *chi.Mux) {
 		case http.MethodPost:
 			group.Post(r.pattern, handler)
 		}
+	})
+}
+
+func (s *Socket) InjectSocket(mux *chi.Mux) {
+	handler := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
+		s.handler(req.Context(), w, req)
+	})
+
+	mux.Group(func(group chi.Router) {
+		group.HandleFunc(s.pattern, handler)
 	})
 }

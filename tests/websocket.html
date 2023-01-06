@@ -17,7 +17,7 @@
           if (ws) {
             return false;
           }
-          ws = new WebSocket("ws://localhost:3002/echo");
+          ws = new WebSocket("ws://localhost:3001/ws/v1/echo2");
           ws.onopen = function (evt) {
             print("OPEN");
           };

@@ -2,7 +2,6 @@ package server
 
 import (
 	"context"
-	"log"
 	"net/http"
 	"time"
 
@@ -10,24 +9,11 @@ import (
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/cors"
 	v1 "github.com/mezmerizxd/go-app/api/v1"
-	"github.com/mezmerizxd/go-app/pkg/socket"
 	"github.com/mezmerizxd/go-app/pkg/version"
 )
 
 type Server struct {
 	srv *http.Server
-}
-
-func echo(w http.ResponseWriter, r *http.Request) {
-	c := socket.New(w, r)
-
-	for {
-		mt, message, _ := c.ReadMessage()
-
-		log.Printf("received: %s", message)
-		c.WriteMessage(mt, message)
-	}
-
 }
 
 func New(addr string, cfg *version.Config) *Server {
@@ -52,9 +38,10 @@ func New(addr string, cfg *version.Config) *Server {
 	r.Use(middleware.Timeout(time.Second * 15))
 
 	// API
-	r.Mount("/api/v1", v1.New(cfg))
+	r.Mount("/api/v1", v1.NewAPI(cfg))
 
-	r.HandleFunc("/echo", echo)
+	// WS
+	r.Mount("/ws/v1", v1.NewWS(cfg))
 
 	return &Server{
 		srv: &http.Server{
